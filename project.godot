@@ -11,5 +11,7 @@ config_version=5
 [application]
 
 config/name="Take_or_Bake"
+run/main_scene="res://world/scene/world.tscn"
+config/use_hidden_project_data_directory=false
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"

@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=3 uid="uid://croiksyafwmc7"]
+
+[ext_resource type="PackedScene" uid="uid://bk52ond68nlqt" path="res://world/models/world_map.blend" id="1_lxk2f"]
+[ext_resource type="PackedScene" uid="uid://d014f0u7i8781" path="res://world/models/ground.blend" id="2_jlpuf"]
+[ext_resource type="PackedScene" uid="uid://wurkw0g58sv1" path="res://world/models/road.blend" id="3_bj6h2"]
+[ext_resource type="PackedScene" uid="uid://dkvcpk2ani6uy" path="res://world/models/simple_appartment.blend" id="4_l73lp"]
+[ext_resource type="PackedScene" uid="uid://s6kfpyvipidf" path="res://world/models/brick_building.blend" id="5_wujil"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_to2rs"]
+size = Vector3(42, 1, 42)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k3opd"]
+size = Vector3(6.3, 15.9, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwc3a"]
+size = Vector3(2, 2, 2)
+
+[node name="World" type="Node3D"]
+
+[node name="world_map" parent="." instance=ExtResource("1_lxk2f")]
+
+[node name="ground" type="StaticBody3D" parent="world_map"]
+
+[node name="ground" parent="world_map/ground" instance=ExtResource("2_jlpuf")]
+transform = Transform3D(3.9, 0, 0, 0, 3.9, 0, 0, 0, 3.9, 0, 0.2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.2, -0.5)
+shape = SubResource("BoxShape3D_to2rs")
+
+[node name="roads" type="Node3D" parent="world_map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="road" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 20)
+
+[node name="road2" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 20)
+
+[node name="road3" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 20)
+
+[node name="road4" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 20)
+
+[node name="road5" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 0, 16)
+
+[node name="road6" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 0, 6)
+
+[node name="road7" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 0, -3)
+
+[node name="road8" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 0, -13)
+
+[node name="road9" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19, 0, 12)
+
+[node name="road10" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19, 0, 1)
+
+[node name="road11" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19, 0, -10)
+
+[node name="road12" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19, 0, -17)
+
+[node name="road13" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -20.4)
+
+[node name="road14" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -20.4)
+
+[node name="road15" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -20.4)
+
+[node name="road16" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -20.4)
+
+[node name="road17" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, -13.4)
+
+[node name="road18" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -9.4)
+
+[node name="road19" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -4.4)
+
+[node name="road20" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 3.6)
+
+[node name="road21" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 13.6)
+
+[node name="buildings" type="Node3D" parent="world_map"]
+
+[node name="tall" type="Node3D" parent="world_map/buildings"]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1.3, -9, 0, 0)
+
+[node name="simple_appartment" parent="world_map/buildings/tall" instance=ExtResource("4_l73lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/buildings/tall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/buildings/tall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 2.35, -0.200001)
+shape = SubResource("BoxShape3D_k3opd")
+
+[node name="tall2" type="Node3D" parent="world_map/buildings"]
+transform = Transform3D(1.44, 0, 0, 0, 1, 0, 0, 0, 0.702, -2, 0, -14)
+
+[node name="simple_appartment" parent="world_map/buildings/tall2" instance=ExtResource("4_l73lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/buildings/tall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/buildings/tall2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 2.35, -0.200001)
+shape = SubResource("BoxShape3D_k3opd")
+
+[node name="brick" type="Node3D" parent="world_map/buildings"]
+transform = Transform3D(3.3, 0, 0, 0, 2.4, 0, 0, 0, 2.86, 12, 2.4, 0)
+
+[node name="brick_building" parent="world_map/buildings/brick" instance=ExtResource("5_wujil")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/buildings/brick"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/buildings/brick/StaticBody3D"]
+transform = Transform3D(0.999938, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 0)
+shape = SubResource("BoxShape3D_rwc3a")
+
+[node name="brick2" type="Node3D" parent="world_map/buildings"]
+transform = Transform3D(5.346, 0, 0, 0, 2.4, 0, 0, 0, 2.86, -10.4, 2.4, 10)
+
+[node name="brick_building" parent="world_map/buildings/brick2" instance=ExtResource("5_wujil")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/buildings/brick2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/buildings/brick2/StaticBody3D"]
+transform = Transform3D(0.999938, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 0)
+shape = SubResource("BoxShape3D_rwc3a")
+
+[node name="brick3" type="Node3D" parent="world_map/buildings"]
+transform = Transform3D(-2.33681e-07, 0, -2.86, 0, 2.4, 0, 5.346, 0, -1.25015e-07, -12.4, 2.4, -12)
+
+[node name="brick_building" parent="world_map/buildings/brick3" instance=ExtResource("5_wujil")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/buildings/brick3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/buildings/brick3/StaticBody3D"]
+transform = Transform3D(0.999938, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 0)
+shape = SubResource("BoxShape3D_rwc3a")
