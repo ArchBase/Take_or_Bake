@@ -1,13 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://croiksyafwmc7"]
+[gd_scene load_steps=13 format=3 uid="uid://croiksyafwmc7"]
 
 [ext_resource type="PackedScene" uid="uid://bk52ond68nlqt" path="res://world/models/world_map.blend" id="1_lxk2f"]
 [ext_resource type="PackedScene" uid="uid://d014f0u7i8781" path="res://world/models/ground.blend" id="2_jlpuf"]
 [ext_resource type="PackedScene" uid="uid://wurkw0g58sv1" path="res://world/models/road.blend" id="3_bj6h2"]
 [ext_resource type="PackedScene" uid="uid://dkvcpk2ani6uy" path="res://world/models/simple_appartment.blend" id="4_l73lp"]
 [ext_resource type="PackedScene" uid="uid://s6kfpyvipidf" path="res://world/models/brick_building.blend" id="5_wujil"]
+[ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://car/YellowCar.tscn" id="6_jwkj6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_to2rs"]
-size = Vector3(42, 1, 42)
+size = Vector3(50.7697, 1, 49.5061)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kg1ye"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yxvrm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t5iyl"]
+size = Vector3(1, 0.3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3opd"]
 size = Vector3(6.3, 15.9, 7)
@@ -18,81 +26,765 @@ size = Vector3(2, 2, 2)
 [node name="World" type="Node3D"]
 
 [node name="world_map" parent="." instance=ExtResource("1_lxk2f")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
 
 [node name="ground" type="StaticBody3D" parent="world_map"]
 
 [node name="ground" parent="world_map/ground" instance=ExtResource("2_jlpuf")]
-transform = Transform3D(3.9, 0, 0, 0, 3.9, 0, 0, 0, 3.9, 0, 0.2, 0)
+transform = Transform3D(4.55114, 0, 0, 0, 3.9, 0, 0, 0, 4.29479, 0, 0.2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.2, -0.5)
+transform = Transform3D(1.04, 0, 0, 0, 1.04, 0, 0, 0, 1.04, 0.239565, -0.261808, -1.18071)
 shape = SubResource("BoxShape3D_to2rs")
 
 [node name="roads" type="Node3D" parent="world_map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 
 [node name="road" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -9.12642, -0.0533866, 18.8889)
 
-[node name="road2" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 20)
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
 
 [node name="road3" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 8.70995, -0.0533866, 18.8889)
 
-[node name="road4" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 20)
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road3"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road3/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road3/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road3/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road3/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road3/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road3"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road3/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road3/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road3/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road3/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road3/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
 
 [node name="road5" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 0, 16)
+transform = Transform3D(-4.37114e-08, 0, 1.4, 0, 1, 0, -1, 0, -6.1196e-08, 21.1411, -0.0533866, 8.80784)
+
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road5"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road5/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road5/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road5/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road5/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road5/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road5"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road5/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road5/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road5/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road5/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road5/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
 
 [node name="road6" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 0, 6)
+transform = Transform3D(-4.37114e-08, 0, 1.4, 0, 1, 0, -1, 0, -6.1196e-08, 21.1411, -0.0533866, -2.17386)
+
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road6"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road6/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road6/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road6/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road6/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road6/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road6"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road6/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road6/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road6/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road6/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road6/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
 
 [node name="road7" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 0, -3)
+transform = Transform3D(-4.37114e-08, 0, 1.4, 0, 1, 0, -1, 0, -6.1196e-08, 21.1411, -0.0533866, -8.9335)
 
-[node name="road8" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 0, -13)
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road7"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
 
-[node name="road9" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19, 0, 12)
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road7/road_bountry"]
+collision_layer = 2
+collision_mask = 2
 
-[node name="road10" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19, 0, 1)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road7/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
 
-[node name="road11" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19, 0, -10)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road7/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
 
-[node name="road12" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19, 0, -17)
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road7/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road7/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road7"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road7/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road7/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road7/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road7/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road7/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road4" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 12.3576, -0.0533866, 18.8889)
+
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road4"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road4/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road4/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road4/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road4/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road4/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road4"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road4/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road4/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road4/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road4/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road4/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
 
 [node name="road13" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -20.4)
+transform = Transform3D(-3.29394e-08, 0, 1.4, 0, 1, 0, -0.753565, 0, -6.1196e-08, 11.392, -0.0533866, -13.585)
 
-[node name="road14" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -20.4)
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road13"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road13/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road13/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road13/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road13/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road13/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road13"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road13/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road13/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road13/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road13/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road13/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
 
 [node name="road15" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -20.4)
+transform = Transform3D(-2.25136, 0, -1.22392e-07, 0, 1, 0, 1.9682e-07, 0, -1.4, -4.70902, -0.0533866, -21.0066)
 
-[node name="road16" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -20.4)
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road15"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
 
-[node name="road17" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, -13.4)
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road15/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road15/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road15/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road15/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road15/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road15"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road15/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road15/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road15/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road15/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road15/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
 
 [node name="road18" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -9.4)
+transform = Transform3D(3.58802e-07, 0, -1.4, 0, 1, 0, 2.73615, 0, 1.83588e-07, -20.6784, -0.0533866, -2.00189)
+
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road18"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road18/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road18/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road18/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road18/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road18/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road18"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road18/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road18/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road18/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road18/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road18/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
 
 [node name="road19" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -4.4)
+transform = Transform3D(3.58802e-07, 0, -1.4, 0, 1, 0, 2.73615, 0, 1.83588e-07, -20.6784, -0.0533866, -2.00189)
 
-[node name="road20" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 3.6)
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road19"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
 
-[node name="road21" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 13.6)
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road19/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road19/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road19/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road19/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road19/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road19"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road19/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road19/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road19/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road19/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road19/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road16" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-0.663167, 0, -1.22392e-07, 0, 1, 0, 5.79759e-08, 0, -1.4, -21.1468, -0.0533866, -21.0066)
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road16"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road16/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road16/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road16/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road16/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road16/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road17" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(8.69639e-08, 0, -1.4, 0, 1, 0, 0.663167, 0, 1.83588e-07, -20.7934, -0.0533866, -20.3158)
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road17"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road17/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road17/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road17/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road17/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road17/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road14" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-0.753565, 0, -1.22392e-07, 0, 1, 0, 6.58787e-08, 0, -1.4, 11.392, -0.0533866, -20.9342)
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road14"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road14/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road14/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road14/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road14/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road14/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road3-s" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 1.312, -0.0533866, 18.8889)
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road3-s"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road3-s/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road3-s/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road3-s/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road3-s/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road3-s/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road3-s3" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 18.6125, -0.0533866, 18.8889)
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road3-s3"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road3-s3/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road3-s3/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road3-s3/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road3-s3/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road3-s3/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road3-s2" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, 1.4, 0, 1, 0, -1, 0, -6.1196e-08, 20.9683, -0.0533866, 17.5119)
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road3-s2"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road3-s2/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road3-s2/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road3-s2/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road3-s2/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road3-s2/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road2" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, 1.4, 0, 1, 0, -1, 0, -6.1196e-08, 0.316178, -0.0533866, 10.2356)
+
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road2"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road2/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road2/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road2/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road2/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road2/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road2"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road2/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road2/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road2/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road2/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road2/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road8" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, 1.4, 0, 1, 0, -1, 0, -6.1196e-08, 0.316178, -0.0533866, 2.97245)
+
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road8"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road8/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road8/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road8/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road8/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road8/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road_bountry2" type="Node3D" parent="world_map/roads/road8"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, 2.60401)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road8/road_bountry2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road8/road_bountry2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road8/road_bountry2"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road8/road_bountry2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road8/road_bountry2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road9" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -3.55271e-15, 0, 1.4, 2.32231, -0.0533866, -6.03564)
+
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road9"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road9/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road9/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road9/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road9/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road9/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road11" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-1, 0, -1.22392e-07, 0, 1, 0, 8.74228e-08, 0, -1.4, 9.26727, -0.0533866, -6.03564)
+
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road11"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road11/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road11/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road11/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road11/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road11/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road12" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(1.31134e-07, 0, -1.4, 0, 1, 0, 1, 0, 1.83588e-07, 11.109, -0.0533866, -8.78661)
+
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road12"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road12/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road12/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road12/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road12/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road12/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
+
+[node name="road10" parent="world_map/roads" instance=ExtResource("3_bj6h2")]
+transform = Transform3D(-4.37114e-08, 0, 1.4, 0, 1, 0, -1, 0, -6.1196e-08, 0.198908, -0.0533866, -4.4193)
+
+[node name="road_bountry" type="Node3D" parent="world_map/roads/road10"]
+transform = Transform3D(-4.37114e-08, 0, 11.6122, 0, 1, 0, -1, 0, -5.07584e-07, 0.0555544, 0.577603, -2.66667)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world_map/roads/road10/road_bountry"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/roads/road10/road_bountry/StaticBody3D"]
+shape = SubResource("BoxShape3D_kg1ye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world_map/roads/road10/road_bountry"]
+transform = Transform3D(1, 0, 0, 0, 0.462, 0, 4.44089e-16, 0, 1, 0, -0.722223, 0)
+mesh = SubResource("BoxMesh_yxvrm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="world_map/roads/road10/road_bountry"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="world_map/roads/road10/road_bountry/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.44089e-16, 0, 1, 0, -0.627778, 0)
+shape = SubResource("BoxShape3D_t5iyl")
 
 [node name="buildings" type="Node3D" parent="world_map"]
 
@@ -123,7 +815,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 2.35, -0.200001)
 shape = SubResource("BoxShape3D_k3opd")
 
 [node name="brick" type="Node3D" parent="world_map/buildings"]
-transform = Transform3D(3.3, 0, 0, 0, 2.4, 0, 0, 0, 2.86, 12, 2.4, 0)
+transform = Transform3D(3.3, 0, 0, 0, 2.4, 0, 0, 0, 2.86, 12, 2.4, 2.8711)
 
 [node name="brick_building" parent="world_map/buildings/brick" instance=ExtResource("5_wujil")]
 
@@ -154,3 +846,32 @@ transform = Transform3D(-2.33681e-07, 0, -2.86, 0, 2.4, 0, 5.346, 0, -1.25015e-0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/buildings/brick3/StaticBody3D"]
 transform = Transform3D(0.999938, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 0)
 shape = SubResource("BoxShape3D_rwc3a")
+
+[node name="traffic" type="Node3D" parent="."]
+
+[node name="yellow_car" parent="traffic" instance=ExtResource("6_jwkj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12383, 0.65, 3.11276)
+STEER_LIMIT = 0.6
+engine_force_value = 40
+
+[node name="center" type="RayCast3D" parent="traffic/yellow_car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.888889, 0)
+target_position = Vector3(0, 0, -11)
+collision_mask = 3
+
+[node name="left" type="RayCast3D" parent="traffic/yellow_car"]
+transform = Transform3D(0.999576, 0, 0.0291254, 0, 1, 0, -0.0291254, 0, 0.999576, 0, 0.888889, -1.46681)
+target_position = Vector3(-4, 0, 0)
+collision_mask = 3
+
+[node name="right" type="RayCast3D" parent="traffic/yellow_car"]
+transform = Transform3D(0.916341, -0.227715, -0.329341, 0.274353, 0.956181, 0.102216, 0.291634, -0.18402, 0.938662, 0, 0.888889, -1.06734)
+target_position = Vector3(8, 0, 0)
+collision_mask = 3
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 35.434, 23)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 18, 28)
+shadow_enabled = true

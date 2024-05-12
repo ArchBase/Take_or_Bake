@@ -1,5 +1,1 @@
-res://world.tscn
-res://CharacterBody3D.gd
-res://cars/YellowCar.tscn
-res://cars/BaseCar.gd
 res://world/scene/world.tscn
