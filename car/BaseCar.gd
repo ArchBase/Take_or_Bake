@@ -10,22 +10,17 @@ var right = 0
 var stop = false
 
 func process_AI():
-	if $left.is_colliding() and $center.is_colliding():
-		left = 0
+	if $right.is_colliding():
 		right = 1
+		left = 0
 	else:
 		right = 0
-	if $right.is_colliding() and $center.is_colliding():
-		right = 0
+	if $left.is_colliding():
 		left = 1
+		right = 0
 	else:
 		left = 0
-	if $right.is_colliding() and $left.is_colliding():
-		right = 0
-		left = 0
-	if $right.is_colliding() and $left.is_colliding() and $center.is_colliding():
-		stop = true
-	print($left.is_colliding(), $center.is_colliding(), $right.is_colliding())
+	print($left.is_colliding(), $right.is_colliding())
 
 func _physics_process(delta):
 	process_AI()
@@ -40,7 +35,7 @@ func _physics_process(delta):
 	steer_target *= STEER_LIMIT
 	#if Input.is_action_pressed("ui_up"):
 	#print(speed > 0.000001)
-	if speed > 3:
+	if speed > 5:
 		engine_force = 0
 	else:
 		#stop = false

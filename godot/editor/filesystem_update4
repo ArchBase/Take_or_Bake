@@ -1,1 +1,6 @@
 res://world/scene/world.tscn
+res://car/BaseCar.gd
+res://car/YellowCar.tscn
+res://car/PlainCar.tscn
+res://PlainCar/scenes/PlainCar.tscn
+res://Bike/scenes/bike.tscn

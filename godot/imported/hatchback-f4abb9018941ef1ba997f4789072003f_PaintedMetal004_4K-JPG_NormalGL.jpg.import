@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://4dns3h728014"
+path.s3tc="res://godot/imported/hatchback-f4abb9018941ef1ba997f4789072003f_PaintedMetal004_4K-JPG_NormalGL.jpg-6ec5dbe1e1b21ebd1602c27fcedad5b0.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={}
+
+[deps]
+
+source_file="res://godot/imported/hatchback-f4abb9018941ef1ba997f4789072003f_PaintedMetal004_4K-JPG_NormalGL.jpg"
+dest_files=["res://godot/imported/hatchback-f4abb9018941ef1ba997f4789072003f_PaintedMetal004_4K-JPG_NormalGL.jpg-6ec5dbe1e1b21ebd1602c27fcedad5b0.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://godot/imported/hatchback-f4abb9018941ef1ba997f4789072003f_PaintedMetal004_4K-JPG_NormalGL.jpg"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

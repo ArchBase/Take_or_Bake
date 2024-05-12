@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdf0svhrkh6yx"]
+
+[ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://car/BaseCar.tscn" id="1_wlihu"]
+[ext_resource type="PackedScene" uid="uid://cdp214kstxny7" path="res://car/Models/Wheel.glb" id="2_6r0a3"]
+[ext_resource type="PackedScene" uid="uid://3opbr2bdue7u" path="res://Bike/models/biker.blend" id="3_v2ryb"]
+
+[node name="car" instance=ExtResource("1_wlihu")]
+engine_force_value = 90
+
+[node name="wheal0" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, -1.40196)
+wheel_radius = 0.51
+wheel_friction_slip = 10.0
+suspension_travel = 0.357
+
+[node name="Wheel" parent="wheal0" index="0" instance=ExtResource("2_6r0a3")]
+transform = Transform3D(-2.8325e-08, 0, -0.648, 0, 0.648, 0, 0.648, 0, -2.8325e-08, 0, 0, 0)
+
+[node name="wheal1" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, -1.40196)
+wheel_radius = 0.51
+wheel_friction_slip = 10.0
+suspension_travel = 0.357
+
+[node name="wheal2" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.286814, 1.43305)
+wheel_radius = 0.51
+wheel_friction_slip = 10.0
+suspension_travel = 0.357
+
+[node name="Wheel" parent="wheal2" index="0" instance=ExtResource("2_6r0a3")]
+transform = Transform3D(-2.8325e-08, 0, -0.648, 0, 0.648, 0, 0.648, 0, -2.8325e-08, 0, 0, 0)
+
+[node name="wheal3" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.286814, 1.43305)
+wheel_radius = 0.51
+wheel_friction_slip = 10.0
+suspension_travel = 0.357
+
+[node name="CollisionShape3D" parent="." index="4"]
+transform = Transform3D(-2.67529e-08, 0, 0.612034, 0, 0.612034, 0, -0.612034, 0, -2.67529e-08, 0.0271343, 1.42222, 0.0811797)
+
+[node name="Camera3D" parent="look" index="0"]
+speed = 10.0
+
+[node name="Hud" parent="." index="6"]
+visible = false
+
+[node name="speed" parent="Hud" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="biker" parent="." index="7" instance=ExtResource("3_v2ryb")]
+transform = Transform3D(-1.04647e-08, 0, 0.239404, 0, 0.239404, 0, -0.239404, 0, -1.04647e-08, 1.00536, 0.279951, 0)

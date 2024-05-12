@@ -13,6 +13,7 @@ engine_force_value = 90
 [node name="wheal0" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, -1.40196)
 wheel_radius = 0.51
+wheel_friction_slip = 10.0
 suspension_travel = 0.357
 
 [node name="Wheel" parent="wheal0" index="0" instance=ExtResource("2_s6veo")]
@@ -21,6 +22,7 @@ transform = Transform3D(-2.8325e-08, 0, -0.648, 0, 0.648, 0, 0.648, 0, -2.8325e-
 [node name="wheal1" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, -1.40196)
 wheel_radius = 0.51
+wheel_friction_slip = 10.0
 suspension_travel = 0.357
 
 [node name="Wheel" parent="wheal1" index="0" instance=ExtResource("2_s6veo")]
@@ -29,6 +31,7 @@ transform = Transform3D(-2.8325e-08, 0, 0.648, 0, 0.648, 0, -0.648, 0, -2.8325e-
 [node name="wheal2" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.286814, 1.43305)
 wheel_radius = 0.51
+wheel_friction_slip = 10.0
 suspension_travel = 0.357
 
 [node name="Wheel" parent="wheal2" index="0" instance=ExtResource("2_s6veo")]
@@ -37,6 +40,7 @@ transform = Transform3D(-2.8325e-08, 0, -0.648, 0, 0.648, 0, 0.648, 0, -2.8325e-
 [node name="wheal3" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.286814, 1.43305)
 wheel_radius = 0.51
+wheel_friction_slip = 10.0
 suspension_travel = 0.357
 
 [node name="Wheel" parent="wheal3" index="0" instance=ExtResource("2_s6veo")]
@@ -49,6 +53,9 @@ shape = SubResource("ConvexPolygonShape3D_45fxt")
 [node name="Camera3D" parent="look" index="0"]
 current = false
 speed = 10.0
+
+[node name="Hud" parent="." index="6"]
+visible = false
 
 [node name="speed" parent="Hud" index="0"]
 metadata/_edit_use_anchors_ = true
