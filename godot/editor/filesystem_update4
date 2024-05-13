@@ -1,2 +1,8 @@
+res://world/scene/world.tscn
+res://PlainCar/scenes/PlainCar.tscn
+res://car/YellowCar.tscn
+res://character/character_car.tscn
+res://Bike/scenes/bike.tscn
 res://main_menu.tscn
 res://loading.tscn
+res://car/BaseCar.gd
