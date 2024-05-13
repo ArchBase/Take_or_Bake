@@ -1,0 +1,10 @@
+res://Bike/scenes/bike.tscn::bf515ee4d79c7d57dcbb48727c10e21c::1715589371::res://godot/exported/133200997/export-9be65eed8dc2d55b915ab95c4a3c7d8a-bike.scn
+res://car/camera/camera_3d.tscn::35b4b13b07dafe05e9fcab2ecb8385ac::1715411969::res://godot/exported/133200997/export-5af72432f5a2e88d498f50e932d33a2b-camera_3d.scn
+res://car/BaseCar.tscn::9db6cd5a777f5db71d6e8d4d03a9df8e::1715411969::res://godot/exported/133200997/export-40fa4152cc13abb4f84e1892dce7d9fc-BaseCar.scn
+res://car/YellowCar.tscn::2b242144fa96931717b8376fb1158303::1715589371::res://godot/exported/133200997/export-a4777a379bb898f4483ea632358c8a43-YellowCar.scn
+res://character/character_car.tscn::b84191af8125ff4f7eb5aa0f60e759da::1715589371::res://godot/exported/133200997/export-a11991d5c2128f96c6282472d42fabc3-character_car.scn
+res://PlainCar/scenes/hatchback.tscn::990ac912bfc50976203e622f05fd2fc3::1715528807::res://godot/exported/133200997/export-5adf07f276962ff7d7728db53a836e79-hatchback.scn
+res://PlainCar/scenes/PlainCar.tscn::524a265d6cc1ac81bef6668057a146bc::1715589371::res://godot/exported/133200997/export-8982a1a5b4793a1721f0b48e99b64f4e-PlainCar.scn
+res://world/scene/world.tscn::2d8271176946d80b2299df2041f8515c::1715610777::res://godot/exported/133200997/export-e37e4f901e84f4b5462db869e411015a-world.scn
+res://loading.tscn::87bf87ad8c9157bfdecc8b3bb45ff860::1715610776::res://godot/exported/133200997/export-6e6b73630a8cc731ec6146c3499c47f8-loading.scn
+res://main_menu.tscn::285c74d45ce48ea92b322a50bc8b55e5::1715610776::res://godot/exported/133200997/export-8b03550a1e82db90fe95208a9e9dbb82-main_menu.scn

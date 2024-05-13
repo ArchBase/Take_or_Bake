@@ -797,6 +797,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45869e-07, 0.890004, -2.78
 stream = ExtResource("10_g58qe")
 volume_db = -12.19
 autoplay = true
+max_distance = 75.0
+panning_strength = 2.11
 
 [node name="car" parent="traffic" instance=ExtResource("7_qd4jf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.44879, 1.03092, 0)
@@ -818,6 +820,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45869e-07, 0.890004, -2.78
 stream = ExtResource("10_g58qe")
 volume_db = -9.143
 autoplay = true
+max_distance = 75.0
+panning_strength = 2.3
 
 [node name="bike1" parent="traffic" instance=ExtResource("8_r2cd4")]
 transform = Transform3D(0.635885, 0, 0, 0, 0.635885, 0, 0, 0, 0.635885, -5.10084, 1.50667, 23.55)
@@ -837,6 +841,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45869e-07, 0.890004, -2.78
 stream = ExtResource("13_onuno")
 volume_db = -12.19
 autoplay = true
+max_distance = 75.0
+panning_strength = 2.0
 
 [node name="bike3" parent="traffic" instance=ExtResource("8_r2cd4")]
 transform = Transform3D(-2.77954e-08, 0, -0.635884, 0, 0.635884, 0, 0.635884, 0, -2.77954e-08, -23.8661, 1.50667, 33.5099)
@@ -856,6 +862,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45869e-07, 0.890004, -2.78
 stream = ExtResource("13_onuno")
 volume_db = -12.19
 autoplay = true
+max_distance = 75.0
+panning_strength = 2.2
 
 [node name="bike2" parent="traffic" instance=ExtResource("8_r2cd4")]
 transform = Transform3D(0.0702526, 0, 0.631992, 0, 0.635884, 0, -0.631992, 0, 0.0702526, 17.8012, 1.50667, -8.35664)
@@ -875,6 +883,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45869e-07, 0.890004, -2.78
 stream = ExtResource("13_onuno")
 volume_db = -12.19
 autoplay = true
+max_distance = 75.0
+panning_strength = 2.17
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0427652, 0.999085, 0, -0.999085, -0.0427652, -3.69836, 66.9937, -13.3546)
@@ -909,7 +919,7 @@ engine_force_value = 40
 environment = SubResource("Environment_irg6a")
 
 [node name="sun_light" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.883668, 0.468115, 0, -0.468115, -0.883668, 0, 18.0916, -74.1899)
+transform = Transform3D(0.457889, -0.416158, -0.785589, 3.55271e-15, -0.883668, 0.468115, -0.889009, -0.214345, -0.404622, 0, 18.0916, -74.1899)
 shadow_enabled = true
 
 [node name="sun_object" type="MeshInstance3D" parent="."]
