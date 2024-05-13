@@ -8,6 +8,7 @@ var steer_target = 0
 var left = 0
 var right = 0
 var stop = false
+var time = 0.0
 
 func process_AI():
 	if $right.is_colliding():
@@ -20,10 +21,14 @@ func process_AI():
 		right = 0
 	else:
 		left = 0
-	print($left.is_colliding(), $right.is_colliding())
-
+	#print($left.is_colliding(), $right.is_colliding())
 func _physics_process(delta):
+	time += delta
+	if time < 1:
+		return
+	
 	process_AI()
+	
 	var speed = linear_velocity.length()*Engine.get_frames_per_second()*delta
 	traction(speed)
 	$Hud/speed.text=str(round(speed*3.8))+"  KMPH"

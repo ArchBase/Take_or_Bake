@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://3opbr2bdue7u" path="res://Bike/models/biker.blend" id="3_v2ryb"]
 
 [node name="car" instance=ExtResource("1_wlihu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.494131, 0, 0)
+center_of_mass = Vector3(0, 0, 0)
 engine_force_value = 90
 
 [node name="wheal0" parent="." index="0"]
@@ -17,7 +19,7 @@ suspension_travel = 0.357
 transform = Transform3D(-2.8325e-08, 0, -0.648, 0, 0.648, 0, 0.648, 0, -2.8325e-08, 0, 0, 0)
 
 [node name="wheal1" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, -1.40196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.547891, 0.340338, -1.40196)
 wheel_radius = 0.51
 wheel_friction_slip = 10.0
 suspension_travel = 0.357
@@ -32,13 +34,13 @@ suspension_travel = 0.357
 transform = Transform3D(-2.8325e-08, 0, -0.648, 0, 0.648, 0, 0.648, 0, -2.8325e-08, 0, 0, 0)
 
 [node name="wheal3" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.286814, 1.43305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.583343, 0.286814, 1.43305)
 wheel_radius = 0.51
 wheel_friction_slip = 10.0
 suspension_travel = 0.357
 
 [node name="CollisionShape3D" parent="." index="4"]
-transform = Transform3D(-2.67529e-08, 0, 0.612034, 0, 0.612034, 0, -0.612034, 0, -2.67529e-08, 0.0271343, 1.42222, 0.0811797)
+transform = Transform3D(0.612034, 0, 4.79616e-14, 0, 0.612034, 0, -4.79616e-14, 0, 0.612034, 1.02363, 1.42222, 0.0811797)
 
 [node name="Camera3D" parent="look" index="0"]
 speed = 10.0
@@ -51,3 +53,35 @@ metadata/_edit_use_anchors_ = true
 
 [node name="biker" parent="." index="7" instance=ExtResource("3_v2ryb")]
 transform = Transform3D(-1.04647e-08, 0, 0.239404, 0, 0.239404, 0, -0.239404, 0, -1.04647e-08, 1.00536, 0.279951, 0)
+
+[node name="headlight" type="Node3D" parent="." index="8"]
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="headlight" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15552, 1.62739, -1.31275)
+light_color = Color(0.992157, 0.941176, 0.976471, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+spot_range = 31.2225
+spot_angle = 47.1185
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="headlight" index="1"]
+transform = Transform3D(1, 0, 0, 0, -0.999944, -0.0105938, 0, 0.0105938, -0.999944, 1.06637, 1.38476, -1.31275)
+light_color = Color(0.992157, 0.941176, 0.976471, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+spot_range = 0.446094
+spot_angle = 47.1185
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="headlight" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.959634, 0.281253, 0, -0.281253, 0.959634, 1.06637, 1.38476, 1.69657)
+light_color = Color(0.992157, 0, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+spot_range = 0.446094
+spot_angle = 57.5605

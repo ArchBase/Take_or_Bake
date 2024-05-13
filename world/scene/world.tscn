@@ -1,13 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://croiksyafwmc7"]
+[gd_scene load_steps=28 format=3 uid="uid://croiksyafwmc7"]
 
+[ext_resource type="Script" path="res://world/scene/world.gd" id="1_c8qct"]
 [ext_resource type="PackedScene" uid="uid://bk52ond68nlqt" path="res://world/models/world_map.blend" id="1_lxk2f"]
 [ext_resource type="PackedScene" uid="uid://d014f0u7i8781" path="res://world/models/ground.blend" id="2_jlpuf"]
 [ext_resource type="PackedScene" uid="uid://wurkw0g58sv1" path="res://world/models/road.blend" id="3_bj6h2"]
 [ext_resource type="PackedScene" uid="uid://dkvcpk2ani6uy" path="res://world/models/simple_appartment.blend" id="4_l73lp"]
 [ext_resource type="PackedScene" uid="uid://s6kfpyvipidf" path="res://world/models/brick_building.blend" id="5_wujil"]
+[ext_resource type="PackedScene" uid="uid://bkwo6735svkuf" path="res://world/models/tree.blend" id="6_10jbx"]
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://car/YellowCar.tscn" id="6_jwkj6"]
+[ext_resource type="PackedScene" uid="uid://cerbpfupp4lg7" path="res://world/models/street_light.blend" id="7_3vjr1"]
 [ext_resource type="PackedScene" uid="uid://c7flnpn3j4p5s" path="res://PlainCar/scenes/PlainCar.tscn" id="7_qd4jf"]
 [ext_resource type="PackedScene" uid="uid://bdf0svhrkh6yx" path="res://Bike/scenes/bike.tscn" id="8_r2cd4"]
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="9_j5mcp"]
+[ext_resource type="PackedScene" uid="uid://lvi0ndi7vvgy" path="res://character/models/char1.blend" id="10_2u532"]
+[ext_resource type="AudioStream" uid="uid://cm11qsir4sa21" path="res://car/sound/car_sound[1].mp3" id="10_g58qe"]
+[ext_resource type="PackedScene" uid="uid://blxplael0c501" path="res://character/character_car.tscn" id="11_f6fmn"]
+[ext_resource type="Script" path="res://character/character_car.gd" id="12_4mlj0"]
+[ext_resource type="AudioStream" uid="uid://dii3lx7fl6hjk" path="res://Bike/sound/bike_sound[1].mp3" id="13_onuno"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_to2rs"]
 size = Vector3(50.7697, 1, 49.5061)
@@ -21,7 +30,35 @@ size = Vector3(6.3, 15.9, 7)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwc3a"]
 size = Vector3(2, 2, 2)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fycpl"]
+height = 3.69461
+radius = 0.807407
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i6wds"]
+height = 2.4268
+radius = 0.260327
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_moh8w"]
+radius = 1.59456
+height = 8.61716
+
+[sub_resource type="Environment" id="Environment_irg6a"]
+background_mode = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_kbxc8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g613"]
+roughness = 0.0
+
 [node name="World" type="Node3D"]
+script = ExtResource("1_c8qct")
+
+[node name="sun_reflector" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.989178, -0.146721, 0, 0.146721, 0.989178, 0.0228834, 18.0053, -71.9049)
+light_color = Color(1, 1, 0.203922, 1)
+light_energy = 16.0
+spot_range = 5.66514
+spot_angle = 55.7065
 
 [node name="world_map" parent="." instance=ExtResource("1_lxk2f")]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
@@ -672,6 +709,72 @@ transform = Transform3D(-2.33681e-07, 0, -2.86, 0, 2.4, 0, 5.346, 0, -1.25015e-0
 transform = Transform3D(0.999938, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 0)
 shape = SubResource("BoxShape3D_rwc3a")
 
+[node name="trees" type="Node3D" parent="world_map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05964e-06, 0, 1.05964e-06)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="world_map/trees"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9343, 0, 13.8238)
+mass = 100.0
+inertia = Vector3(100, 100, 100)
+
+[node name="tree" parent="world_map/trees/RigidBody3D" instance=ExtResource("6_10jbx")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/trees/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.88311, 0)
+shape = SubResource("CylinderShape3D_fycpl")
+
+[node name="street_lights" type="Node3D" parent="world_map"]
+
+[node name="light1" type="RigidBody3D" parent="world_map/street_lights"]
+transform = Transform3D(-0.0542706, 0, -0.998526, 0, 1, 0, 0.998526, 0, -0.0542706, 3.96039, 0.111195, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/street_lights/light1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47998, 0)
+shape = SubResource("CylinderShape3D_i6wds")
+
+[node name="street_light" parent="world_map/street_lights/light1" instance=ExtResource("7_3vjr1")]
+transform = Transform3D(0.309891, 0, 0, 0, 0.309891, 0, 0, 0, 0.309891, 0, 0, 0)
+
+[node name="light5" type="RigidBody3D" parent="world_map/street_lights"]
+transform = Transform3D(-0.612824, 0, 0.790219, 0, 1, 0, -0.790219, 0, -0.612824, 6.67784, 0.111195, -16.8177)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/street_lights/light5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47998, 0)
+shape = SubResource("CylinderShape3D_i6wds")
+
+[node name="street_light" parent="world_map/street_lights/light5" instance=ExtResource("7_3vjr1")]
+transform = Transform3D(0.309891, 0, 0, 0, 0.309891, 0, 0, 0, 0.309891, 0, 0, 0)
+
+[node name="light2" type="RigidBody3D" parent="world_map/street_lights"]
+transform = Transform3D(0.423693, 0, -0.905805, 0, 1, 0, 0.905805, 0, 0.423693, 3.96039, 0.439729, 16.3204)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/street_lights/light2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47998, 0)
+shape = SubResource("CylinderShape3D_i6wds")
+
+[node name="street_light" parent="world_map/street_lights/light2" instance=ExtResource("7_3vjr1")]
+transform = Transform3D(0.309891, 0, 0, 0, 0.309891, 0, 0, 0, 0.309891, 0, 0, 0)
+
+[node name="light3" type="RigidBody3D" parent="world_map/street_lights"]
+transform = Transform3D(0.830916, 0, -0.556397, 0, 1, 0, 0.556397, 0, 0.830916, -16.8844, 0.111195, 14.844)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/street_lights/light3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47998, 0)
+shape = SubResource("CylinderShape3D_i6wds")
+
+[node name="street_light" parent="world_map/street_lights/light3" instance=ExtResource("7_3vjr1")]
+transform = Transform3D(0.309891, 0, 0, 0, 0.309891, 0, 0, 0, 0.309891, 0, 0, 0)
+
+[node name="light4" type="RigidBody3D" parent="world_map/street_lights"]
+transform = Transform3D(-0.716375, 0, -0.697715, 0, 1, 0, 0.697715, 0, -0.716375, -16.8844, 0.111195, -17.5198)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world_map/street_lights/light4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47998, 0)
+shape = SubResource("CylinderShape3D_i6wds")
+
+[node name="street_light" parent="world_map/street_lights/light4" instance=ExtResource("7_3vjr1")]
+transform = Transform3D(0.309891, 0, 0, 0, 0.309891, 0, 0, 0, 0.309891, 0, 0, 0)
+
 [node name="traffic" type="Node3D" parent="."]
 
 [node name="yellow_car" parent="traffic" instance=ExtResource("6_jwkj6")]
@@ -689,20 +792,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.833546, 0.493123, -2.22004
 target_position = Vector3(0, 0, -2)
 collision_mask = 6
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="traffic/yellow_car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45869e-07, 0.890004, -2.78144)
+stream = ExtResource("10_g58qe")
+volume_db = -12.19
+autoplay = true
+
 [node name="car" parent="traffic" instance=ExtResource("7_qd4jf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.44879, 1.03092, 0)
 STEER_LIMIT = 0.6
 engine_force_value = 40
 
 [node name="right" type="RayCast3D" parent="traffic/car"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.842394, 0.493123, -2.22004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11258, 0.493123, -2.22004)
 target_position = Vector3(0, 0, -2)
 collision_mask = 6
 
 [node name="left" type="RayCast3D" parent="traffic/car"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.833546, 0.493123, -2.22004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.990973, 0.493123, -2.22004)
 target_position = Vector3(0, 0, -2)
 collision_mask = 6
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="traffic/car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45869e-07, 0.890004, -2.78144)
+stream = ExtResource("10_g58qe")
+volume_db = -9.143
+autoplay = true
 
 [node name="bike1" parent="traffic" instance=ExtResource("8_r2cd4")]
 transform = Transform3D(0.635885, 0, 0, 0, 0.635885, 0, 0, 0, 0.635885, -5.10084, 1.50667, 23.55)
@@ -717,8 +832,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24014, 0.493123, -2.22004)
 target_position = Vector3(0, 0, -1)
 collision_mask = 6
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="traffic/bike1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45869e-07, 0.890004, -2.78144)
+stream = ExtResource("13_onuno")
+volume_db = -12.19
+autoplay = true
+
 [node name="bike3" parent="traffic" instance=ExtResource("8_r2cd4")]
-transform = Transform3D(-2.77954e-08, 0, -0.635884, 0, 0.635884, 0, 0.635884, 0, -2.77954e-08, -20.0431, 1.50667, 33.5099)
+transform = Transform3D(-2.77954e-08, 0, -0.635884, 0, 0.635884, 0, 0.635884, 0, -2.77954e-08, -23.8661, 1.50667, 33.5099)
 
 [node name="right" type="RayCast3D" parent="traffic/bike3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13937, 0.493123, -2.22004)
@@ -729,6 +850,12 @@ collision_mask = 6
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24014, 0.493123, -2.22004)
 target_position = Vector3(0, 0, -1)
 collision_mask = 6
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="traffic/bike3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45869e-07, 0.890004, -2.78144)
+stream = ExtResource("13_onuno")
+volume_db = -12.19
+autoplay = true
 
 [node name="bike2" parent="traffic" instance=ExtResource("8_r2cd4")]
 transform = Transform3D(0.0702526, 0, 0.631992, 0, 0.635884, 0, -0.631992, 0, 0.0702526, 17.8012, 1.50667, -8.35664)
@@ -743,10 +870,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24014, 0.493123, -2.22004)
 target_position = Vector3(0, 0, -1)
 collision_mask = 6
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="traffic/bike2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45869e-07, 0.890004, -2.78144)
+stream = ExtResource("13_onuno")
+volume_db = -12.19
+autoplay = true
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0427652, 0.999085, 0, -0.999085, -0.0427652, -3.69836, 66.9937, -13.3546)
+
+[node name="character" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8753, 2.44698, 16.951)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="character"]
+transform = Transform3D(0.345028, 0, 0, 0, 0.345028, 0, 0, 0, 0.345028, -4.01248, 0.296968, 0)
+script = ExtResource("9_j5mcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="character/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75939, 0)
+shape = SubResource("CapsuleShape3D_moh8w")
+
+[node name="char1" parent="character/CharacterBody3D" instance=ExtResource("10_2u532")]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="character/CharacterBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, -1.2931e-08, 0.989, 0.147913, 8.64612e-08, 0.147913, -0.989, 0, 11.2401, -13.9262)
+
+[node name="Camera3D" type="Camera3D" parent="character/CharacterBody3D/SpringArm3D"]
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 18, 28)
+[node name="car" parent="character" instance=ExtResource("11_f6fmn")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("12_4mlj0")
+STEER_SPEED = 1.5
+STEER_LIMIT = 0.6
+engine_force_value = 40
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_irg6a")
+
+[node name="sun_light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.883668, 0.468115, 0, -0.468115, -0.883668, 0, 18.0916, -74.1899)
 shadow_enabled = true
+
+[node name="sun_object" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.45323, 0, 0, 0, -3.05151, 1.61651, 0, -1.61651, -3.05151, 0, 18.0916, -76.1342)
+mesh = SubResource("SphereMesh_kbxc8")
+skeleton = NodePath("../sun_light")
+surface_material_override/0 = SubResource("StandardMaterial3D_7g613")

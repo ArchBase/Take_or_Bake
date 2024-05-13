@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://co1eayj4wm4aw"]
+
+[ext_resource type="Script" path="res://loading.gd" id="1_7o4jf"]
+[ext_resource type="PackedScene" uid="uid://8d1bkjg3s2ke" path="res://world/scene/loading.blend" id="1_csam2"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_7o4jf")
+
+[node name="loading" parent="." instance=ExtResource("1_csam2")]

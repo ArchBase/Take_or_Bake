@@ -12,19 +12,21 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and not Global.in_car:
 		var prev_x = rotation_degrees.x
 		rotation_degrees.y -= event.relative.x * MOUSE_SENSITIVITY
 		rotation_degrees.x += event.relative.y * MOUSE_SENSITIVITY
 		if rotation_degrees.x > 13.0 or rotation_degrees.x < -40.0:
 			rotation_degrees.x = prev_x
-		print(rotation_degrees)
+		#print(rotation_degrees)
 		#rotation_degrees.x = clamp(rotation_degrees.x, -90.0, 30.0)
 		
 		#rotation_degrees.y -= event.relative.y * MOUSE_SENSITIVITY
 		#rotation_degrees.y = wrapf(rotation_degrees.y, 0.0, 360.0)
 
 func _physics_process(delta):
+	if Global.in_car:
+		return
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -36,7 +38,8 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	#var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir = Input.get_vector("turn_left", "turn_right", "forward", "reverse")
 	#print(input_dir.x)
 	input_dir.x *= -1
 	var direction = (transform.basis * Vector3(input_dir.x, 0, -input_dir.y)).normalized()

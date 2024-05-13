@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://bii63ipytae0p"]
+
+[ext_resource type="Texture2D" uid="uid://dsb25ts6sltb2" path="res://world/scene/Bark013_4K-JPG_Color.jpg" id="1_7re3b"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_oif02"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oif02")
+
+[node name="day_or_night" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="day" type="Label" parent="day_or_night"]
+layout_mode = 2
+offset_left = 317.0
+offset_top = 46.0
+offset_right = 350.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0.192157, 1, 0, 1)
+text = "Day"
+
+[node name="button" type="CheckButton" parent="day_or_night"]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 47.0
+offset_right = 319.0
+offset_bottom = 71.0
+
+[node name="night" type="Label" parent="day_or_night"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 47.0
+offset_right = 279.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+text = "Night"
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 109.0
+offset_right = 316.0
+offset_bottom = 140.0
+text = "Start"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(305, 94)
+zoom = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.360784, 0.360784, 0.360784, 1)
+z_index = -1
+texture = ExtResource("1_7re3b")
+
+[connection signal="toggled" from="day_or_night/button" to="." method="_on_button_toggled"]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
