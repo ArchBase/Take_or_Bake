@@ -1,16 +1,16 @@
 2a60927148abd1d33b818b535e306557
-::res://::1715610234
+::res://::1715667625
 CharacterBody3D.gd::GDScript::-1::1715500721::0::1::::<>CharacterBody3D<>::
-export_presets.cfg::TextFile::-1::1715594651::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1715610865::0::1::::<><>::
 global.gd::GDScript::-1::1715536326::0::1::::<>Node<>::
 icon.svg::CompressedTexture2D::1285022132352795453::1715398533::1715403203::1::::<><>::
-loading.gd::GDScript::-1::1715584938::0::1::::<>Node3D<>::
-loading.tscn::PackedScene::5809403143706450602::1715595076::0::1::::<><>::res://loading.gd<>uid://8d1bkjg3s2ke::::res://world/scene/loading.blend
+loading.gd::GDScript::-1::1715610267::0::1::::<>Node3D<>::
+loading.tscn::PackedScene::5809403143706450602::1715666820::0::1::::<><>::res://loading.gd<>uid://8d1bkjg3s2ke::::res://world/scene/loading.blend
 main_menu.gd::GDScript::-1::1715584456::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::2966379128309649249::1715595076::0::1::::<><>::uid://dsb25ts6sltb2::::res://world/scene/Bark013_4K-JPG_Color.jpg<>res://main_menu.gd
+main_menu.tscn::PackedScene::2966379128309649249::1715666820::0::1::::<><>::uid://dsb25ts6sltb2::::res://world/scene/Bark013_4K-JPG_Color.jpg<>res://main_menu.gd
 new_script.gd::GDScript::-1::1715499247::0::1::::<>VehicleBody3D<>::
-README.md::TextFile::-1::1715398644::0::1::::<><>::
-::res://Bike/::1715588581
+README.md::TextFile::-1::1715666336::0::1::::<><>::
+::res://Bike/::1715664704
 ::res://Bike/models/::1715585270
 biker.blend::PackedScene::1995102385764053396::1715585252::1715585270::1::::<><>::res://godot/imported/biker-730f308dba392e08851a5152a68da8cb_PaintedMetal016_4K-JPG_Color.jpg<>res://godot/imported/biker-730f308dba392e08851a5152a68da8cb_PaintedMetal016_4K-JPG_NormalGL.jpg
 char1.obj::Mesh::1502623793138659548::1715495022::1715495303::1::::<><>::
@@ -18,7 +18,7 @@ char1.obj::Mesh::1502623793138659548::1715495022::1715495303::1::::<><>::
 bike.tscn::PackedScene::2608860287077008123::1715589371::0::1::::<><>::uid://duy0dbkychify::::res://car/BaseCar.tscn<>uid://cdp214kstxny7::::res://car/Models/Wheel.glb<>uid://3opbr2bdue7u::::res://Bike/models/biker.blend
 ::res://Bike/sound/::1715588848
 bike_sound[1].mp3::AudioStreamMP3::7739008799460353568::1715588564::1715588848::1::::<><>::
-::res://car/::1715589371
+::res://car/::1715665088
 BaseCar.gd::GDScript::-1::1715588169::0::1::::<>VehicleBody3D<>::
 BaseCar.tscn::PackedScene::8614107341203063482::1715411969::0::1::::<><>::res://car/BaseCar.gd<>uid://8sl5gmdd6o6w::::res://car/camera/camera_3d.tscn
 YellowCar.tscn::PackedScene::5397925737447273036::1715589371::0::1::::<><>::uid://duy0dbkychify::::res://car/BaseCar.tscn<>uid://cdp214kstxny7::::res://car/Models/Wheel.glb<>uid://bf3jxt302enrx::::res://car/Models/car.glb
@@ -35,12 +35,12 @@ Wheel_ImphenziaPalette01.png::CompressedTexture2D::5969732589049227729::17153622
 car engine.mp3::AudioStreamMP3::5248223983077247515::1715587716::1715588153::1::::<><>::
 car engine_wav.wav::AudioStreamWAV::3554516466469398511::1715585906::1715585928::1::::<><>::
 car_sound[1].mp3::AudioStreamMP3::5670389485753153584::1715588510::1715588652::1::::<><>::
-::res://character/::1715589371
+::res://character/::1715665095
 character_car.gd::GDScript::-1::1715536924::0::1::::<>VehicleBody3D<>::
 character_car.tscn::PackedScene::3206909057391812836::1715589371::0::1::::<><>::uid://duy0dbkychify::::res://car/BaseCar.tscn<>uid://cdp214kstxny7::::res://car/Models/Wheel.glb<>uid://bf3jxt302enrx::::res://car/Models/car.glb
 ::res://character/models/::1715403928
 char1.blend::PackedScene::815960281488426784::1715403925::1715403928::1::::<><>::
-::res://exports/::1715594651
+::res://exports/::1715610865
 ::res://exports/web/::1715593616
 Take_or_Bake.apple-touch-icon.png::CompressedTexture2D::1149308281235572027::1715593018::1715593616::1::::<><>::
 Take_or_Bake.icon.png::CompressedTexture2D::1123563655976599774::1715593018::1715593616::1::::<><>::
@@ -118,7 +118,7 @@ world_map.blend-1deb5d1f3c645bcbd559bb2b0beddbec.scn::PackedScene::-1::-1::0::1:
 ::res://exports/windows/world/models/::1715594383
 ::res://exports/windows/world/scene/::1715594383
 world.gd::GDScript::-1::-1::0::1::::<>Node3D<>::
-::res://PlainCar/::1715588537
+::res://PlainCar/::1715665101
 ::res://PlainCar/models/::1715524100
 hatchback.blend::PackedScene::6923733768758653689::1715524094::1715524100::1::::<><>::res://godot/imported/hatchback-f4abb9018941ef1ba997f4789072003f_PaintedMetal004_4K-JPG_Color.jpg<>res://godot/imported/hatchback-f4abb9018941ef1ba997f4789072003f_PaintedMetal004_4K-JPG_NormalGL.jpg
 tyre.blend::PackedScene::7031082779689765075::1715268991::1715493167::1::::<><>::
@@ -136,8 +136,8 @@ simple_appartment.blend::PackedScene::7904651208149932684::1715409741::171540974
 street_light.blend::PackedScene::5088778961874255952::1715527374::1715527378::1::::<><>::
 tree.blend::PackedScene::3134632553562204893::1715502386::1715502409::1::::<><>::res://godot/imported/tree-2f72ba0c92adb84356663fc947c41819_Bark013_4K-JPG_Color.jpg<>res://godot/imported/tree-2f72ba0c92adb84356663fc947c41819_Bark013_4K-JPG_NormalGL.jpg<>res://godot/imported/tree-2f72ba0c92adb84356663fc947c41819_LeafSet004_2K-JPG_Color.jpg<>res://godot/imported/tree-2f72ba0c92adb84356663fc947c41819_LeafSet004_2K-JPG_NormalGL.jpg
 world_map.blend::PackedScene::3151905501505667831::1715404041::1715404055::1::::<><>::
-::res://world/scene/::1715595076
+::res://world/scene/::1715666820
 Bark013_4K-JPG_Color.jpg::CompressedTexture2D::8426419574122926049::1715535771::1715535776::1::::<><>::
 loading.blend::PackedScene::2324005940370591124::1715584385::1715584388::1::::<><>::
 world.gd::GDScript::-1::1715583073::0::1::::<>Node3D<>::
-world.tscn::PackedScene::5995457574173939092::1715595076::0::1::::<><>::res://world/scene/world.gd<>uid://bk52ond68nlqt::::res://world/models/world_map.blend<>uid://d014f0u7i8781::::res://world/models/ground.blend<>uid://wurkw0g58sv1::::res://world/models/road.blend<>uid://dkvcpk2ani6uy::::res://world/models/simple_appartment.blend<>uid://s6kfpyvipidf::::res://world/models/brick_building.blend<>uid://bkwo6735svkuf::::res://world/models/tree.blend<>uid://ci52bv1m15cbs::::res://car/YellowCar.tscn<>uid://cerbpfupp4lg7::::res://world/models/street_light.blend<>uid://c7flnpn3j4p5s::::res://PlainCar/scenes/PlainCar.tscn<>uid://bdf0svhrkh6yx::::res://Bike/scenes/bike.tscn<>res://CharacterBody3D.gd<>uid://lvi0ndi7vvgy::::res://character/models/char1.blend<>uid://cm11qsir4sa21::::res://car/sound/car_sound[1].mp3<>uid://blxplael0c501::::res://character/character_car.tscn<>res://character/character_car.gd<>uid://dii3lx7fl6hjk::::res://Bike/sound/bike_sound[1].mp3
+world.tscn::PackedScene::5995457574173939092::1715666820::0::1::::<><>::res://world/scene/world.gd<>uid://bk52ond68nlqt::::res://world/models/world_map.blend<>uid://d014f0u7i8781::::res://world/models/ground.blend<>uid://wurkw0g58sv1::::res://world/models/road.blend<>uid://dkvcpk2ani6uy::::res://world/models/simple_appartment.blend<>uid://s6kfpyvipidf::::res://world/models/brick_building.blend<>uid://bkwo6735svkuf::::res://world/models/tree.blend<>uid://ci52bv1m15cbs::::res://car/YellowCar.tscn<>uid://cerbpfupp4lg7::::res://world/models/street_light.blend<>uid://c7flnpn3j4p5s::::res://PlainCar/scenes/PlainCar.tscn<>uid://bdf0svhrkh6yx::::res://Bike/scenes/bike.tscn<>res://CharacterBody3D.gd<>uid://lvi0ndi7vvgy::::res://character/models/char1.blend<>uid://cm11qsir4sa21::::res://car/sound/car_sound[1].mp3<>uid://blxplael0c501::::res://character/character_car.tscn<>res://character/character_car.gd<>uid://dii3lx7fl6hjk::::res://Bike/sound/bike_sound[1].mp3
