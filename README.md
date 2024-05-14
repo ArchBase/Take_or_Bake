@@ -17,6 +17,8 @@ In vehicle:
     Use 'space' to brake
     Use 'e' to get out of the car
     Use 'h' to toggle headlights
+## Architecture
+Here vehicles use two raycast node to drive through a rail path provided on road
 ## Future🚀
 With the Godot engine, the potential is limitless. 
 Imagine this game with top-tier assets - it's a journey waiting to happen!.
