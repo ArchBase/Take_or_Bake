@@ -14,7 +14,8 @@ Character:
     Use 'e' to enter in car
 In vehicle:
     Use 'w','a','d','s' keys to accelerate, steer left/right and reverse respectevely
-    Use 'space' to get out of the car
+    Use 'space' to brake
+    Use 'e' to get out of the car
     Use 'h' to toggle headlights
 ## Future🚀
 With the Godot engine, the potential is limitless. 
