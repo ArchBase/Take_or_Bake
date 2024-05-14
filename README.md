@@ -1,4 +1,4 @@
-#Open World prototype In Godot 4💻
+# Open World prototype In Godot 4💻
     An open world game prototype made in Godot 4, using car demo from "https://godotassetlibrary.com/asset/T9ecLv/simple-car"
 
 ## How to Run❓
